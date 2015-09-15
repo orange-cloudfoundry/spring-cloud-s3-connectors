@@ -2,7 +2,7 @@
 A cloudfoundry s3 service connector for spring which working great with riakcs. 
 
 
-## Exemple for spring  configuration
+## Exemple for spring configuration
 
 ```java
 @Configuration
