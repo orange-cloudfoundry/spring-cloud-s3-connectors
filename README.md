@@ -5,7 +5,7 @@ A cloudfoundry s3 service connector for spring which working great with riakcs.
 
 ### Maven
 
- 1. Add the JitPack repository to your build file 
+ **Step 1:** Add the JitPack repository to your build file 
 
 ```xml
     <repository>
@@ -14,7 +14,7 @@ A cloudfoundry s3 service connector for spring which working great with riakcs.
 	</repository>
 ```
 
- 2. Add the dependency in the form
+ **Step 2:** Add the dependency in the form
  
 ```xml
 	<dependency>
@@ -25,7 +25,7 @@ A cloudfoundry s3 service connector for spring which working great with riakcs.
 ```
 
 ### Gradle
- 1. Add it in your build.gradle at the end of repositories
+ **Step 1:** Add it in your build.gradle at the end of repositories
  
 ```gradle
  repositories {
@@ -34,7 +34,7 @@ A cloudfoundry s3 service connector for spring which working great with riakcs.
     }
 ```
 
- 2. Add the dependency in the form
+ **Step 2:** Add the dependency in the form
  
 ```gradle
 	dependencies {
