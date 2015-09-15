@@ -1,6 +1,47 @@
 # Cloudfoundry-s3-service-connector
 A cloudfoundry s3 service connector for spring which working great with riakcs. 
 
+## Import in your project
+
+### Maven
+
+ 1. Add the JitPack repository to your build file 
+
+```xml
+    <repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+```
+
+ 2. Add the dependency in the form
+ 
+```xml
+	<dependency>
+	    <groupId>com.github.Orange-OpenSource</groupId>
+	    <artifactId>cloudfoundry-s3-service-connector</artifactId>
+	    <version>0.1.0</version>
+	</dependency>
+```
+
+### Gradle
+ 1. Add it in your build.gradle at the end of repositories
+ 
+```css
+ repositories {
+        // ...
+        maven { url "https://jitpack.io" }
+    }
+```
+
+ 2. Add the dependency in the form
+ 
+```css
+	dependencies {
+	        compile 'com.github.Orange-OpenSource:cloudfoundry-s3-service-connector:0.1.0'
+	}
+```
+
 
 ## Exemple for spring configuration
 
