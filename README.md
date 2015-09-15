@@ -17,8 +17,10 @@ public class CloudConfig extends AbstractCloudConfig {
         return this.s3ContextBuilder.getBucketName();
     }
 
+    /**
+     * blobstore context from jcloud see: https://jclouds.apache.org/guides/aws/ to know how to use
+     */
     @Bean
-    //blobstore context from jcloud see: https://jclouds.apache.org/guides/aws/ to know how to use
     public BlobStoreContext blobStoreContext() {
         return this.s3ContextBuilder.getContextBuilder().buildView(BlobStoreContext.class);
     }
