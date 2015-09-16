@@ -1,6 +1,6 @@
-package com.orange.cloudfoundry.connector.factory;
+package com.orange.cloudfoundry.connector.s3.factory;
 
-import com.orange.cloudfoundry.connector.service.info.S3ServiceInfo;
+import com.orange.cloudfoundry.connector.s3.service.info.S3ServiceInfo;
 import org.springframework.cloud.service.AbstractServiceConnectorCreator;
 import org.springframework.cloud.service.ServiceConnectorConfig;
 
@@ -23,20 +23,15 @@ import static org.jclouds.s3.reference.S3Constants.PROPERTY_S3_VIRTUAL_HOST_BUCK
 public class S3FactoryCreator extends AbstractServiceConnectorCreator<S3ContextBuilder, S3ServiceInfo> {
 
     public S3ContextBuilder create(S3ServiceInfo serviceInfo, ServiceConnectorConfig serviceConnectorConfig) {
-        String key = serviceInfo.getUserName();
-        String secret = serviceInfo.getPassword();
-
-        String port = "";
-        if (serviceInfo.getPort() != -1) {
-            port += ":" + serviceInfo.getPort();
-        }
-        String host = serviceInfo.getScheme() + "://" + serviceInfo.getHost() + port;
         Properties storeProviderInitProperties = new Properties();
         storeProviderInitProperties.put(PROPERTY_TRUST_ALL_CERTS, true);
         storeProviderInitProperties.put(PROPERTY_RELAX_HOSTNAME, true);
         storeProviderInitProperties.put(PROPERTY_S3_VIRTUAL_HOST_BUCKETS, false);
         S3ContextBuilder riakcsContextBuilder = new S3ContextBuilder();
-        riakcsContextBuilder.getContextBuilder().overrides(storeProviderInitProperties).endpoint(host).credentials(key, secret);
+        riakcsContextBuilder.getContextBuilder()
+                .overrides(storeProviderInitProperties)
+                .endpoint(serviceInfo.getS3Host())
+                .credentials(serviceInfo.getAccessKeyId(), serviceInfo.getSecretAccessKey());
         riakcsContextBuilder.setBucketName(serviceInfo.getBucket());
         return riakcsContextBuilder;
     }

@@ -1,4 +1,4 @@
-package com.orange.cloudfoundry.connector.service.info;
+package com.orange.cloudfoundry.connector.s3.service.info;
 
 import org.springframework.cloud.service.UriBasedServiceInfo;
 
@@ -19,6 +19,26 @@ public class S3ServiceInfo extends UriBasedServiceInfo {
 
     public S3ServiceInfo(String id, String uriString) {
         super(id, uriString);
+    }
+
+    public String getS3Host() {
+        String port = "";
+        if (this.getPort() != -1) {
+            port += ":" + this.getPort();
+        }
+        String protocol = this.getScheme();
+        if (protocol.equals("s3")) {
+            protocol = "https";
+        }
+        return protocol + "://" + this.getHost() + port;
+    }
+
+    public String getAccessKeyId() {
+        return this.getUserName();
+    }
+
+    public String getSecretAccessKey() {
+        return this.getPassword();
     }
 
 

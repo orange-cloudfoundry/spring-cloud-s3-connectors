@@ -1,4 +1,4 @@
-package com.orange.cloudfoundry.connector.factory;
+package com.orange.cloudfoundry.connector.s3.factory;
 
 import org.jclouds.ContextBuilder;
 

@@ -1,4 +1,4 @@
-package com.orange.cloudfoundry.connector.service.info;
+package com.orange.cloudfoundry.connector.s3.service.info;
 
 import org.springframework.cloud.cloudfoundry.CloudFoundryServiceInfoCreator;
 import org.springframework.cloud.cloudfoundry.Tags;
@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class S3ServiceInfoCreator extends CloudFoundryServiceInfoCreator<S3ServiceInfo> {
     public S3ServiceInfoCreator() {
-        super(new Tags("riak-cs", "s3"));
+        super(new Tags("riak-cs", "s3"), "s3");
     }
 
     public S3ServiceInfo createServiceInfo(Map<String, Object> serviceData) {
