@@ -1,5 +1,5 @@
 # Cloudfoundry-s3-service-connector
-A cloudfoundry s3 service connector for spring which working great with riakcs. 
+A cloudfoundry s3 service connector for spring which works great with riakcs. 
 
 ## Import in your project
 
