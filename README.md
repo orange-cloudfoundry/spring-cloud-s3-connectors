@@ -1,4 +1,6 @@
 # Cloudfoundry-s3-service-connector
+[![Build Status](https://travis-ci.org/Orange-OpenSource/cloudfoundry-s3-service-connector.svg)](https://travis-ci.org/Orange-OpenSource/cloudfoundry-s3-service-connector)
+
 A cloudfoundry s3 service connector for spring which works great with riakcs. 
 
 ## Import in your project
