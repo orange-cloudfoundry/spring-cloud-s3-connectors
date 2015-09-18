@@ -6,8 +6,6 @@ import org.springframework.cloud.service.ServiceConnectorConfig;
 
 import java.util.Properties;
 
-import static org.jclouds.Constants.PROPERTY_RELAX_HOSTNAME;
-import static org.jclouds.Constants.PROPERTY_TRUST_ALL_CERTS;
 import static org.jclouds.s3.reference.S3Constants.PROPERTY_S3_VIRTUAL_HOST_BUCKETS;
 
 /**
@@ -24,9 +22,6 @@ public class S3FactoryCreator extends AbstractServiceConnectorCreator<S3ContextB
 
     public S3ContextBuilder create(S3ServiceInfo serviceInfo, ServiceConnectorConfig serviceConnectorConfig) {
         Properties storeProviderInitProperties = new Properties();
-        storeProviderInitProperties.put(PROPERTY_TRUST_ALL_CERTS, true);
-        storeProviderInitProperties.put(PROPERTY_RELAX_HOSTNAME, true);
-        storeProviderInitProperties.put(PROPERTY_S3_VIRTUAL_HOST_BUCKETS, false);
         storeProviderInitProperties.put(PROPERTY_S3_VIRTUAL_HOST_BUCKETS, serviceInfo.isVirtualHostBuckets());
         S3ContextBuilder riakcsContextBuilder = new S3ContextBuilder();
         riakcsContextBuilder.getContextBuilder()
