@@ -27,6 +27,7 @@ public class S3FactoryCreator extends AbstractServiceConnectorCreator<S3ContextB
         storeProviderInitProperties.put(PROPERTY_TRUST_ALL_CERTS, true);
         storeProviderInitProperties.put(PROPERTY_RELAX_HOSTNAME, true);
         storeProviderInitProperties.put(PROPERTY_S3_VIRTUAL_HOST_BUCKETS, false);
+        storeProviderInitProperties.put(PROPERTY_S3_VIRTUAL_HOST_BUCKETS, serviceInfo.isVirtualHostBuckets());
         S3ContextBuilder riakcsContextBuilder = new S3ContextBuilder();
         riakcsContextBuilder.getContextBuilder()
                 .overrides(storeProviderInitProperties)
