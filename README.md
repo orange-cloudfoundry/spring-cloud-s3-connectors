@@ -22,7 +22,7 @@ A Cloud Foundry s3 service connector for spring which works great with riakcs.
 	<dependency>
 	    <groupId>com.github.Orange-OpenSource</groupId>
 	    <artifactId>cloudfoundry-s3-service-connector</artifactId>
-	    <version>0.1.0</version>
+	    <version>1.0.0</version>
 	</dependency>
 ```
 
@@ -40,7 +40,7 @@ A Cloud Foundry s3 service connector for spring which works great with riakcs.
  
 ```gradle
 	dependencies {
-	        compile 'com.github.Orange-OpenSource:cloudfoundry-s3-service-connector:0.1.0'
+	        compile 'com.github.Orange-OpenSource:cloudfoundry-s3-service-connector:1.0.0'
 	}
 ```
 
