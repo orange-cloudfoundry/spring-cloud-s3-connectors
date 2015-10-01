@@ -47,6 +47,10 @@ A Cloud Foundry s3 service connector for spring which works great with riakcs.
 
 ## How to use
 
+### Example app
+Have a look to [https://github.com/Orange-OpenSource/cloudfoundry-poc-s3](https://github.com/Orange-OpenSource/cloudfoundry-poc-s3) it will show you how to send and retrieve file with this connector to an S3 storage. 
+
+### Bootstrap
 ```java
 @Configuration
 @Profile(value = "cloud")
