@@ -17,9 +17,18 @@
     <scm>
         <url>git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git</url>
         <connection>scm:git:git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git</connection>
-        <developerConnection>scm:git:git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git
+        </developerConnection>
         <tag>HEAD</tag>
     </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>jfrog-oss</id>
+            <name>JFrog OSS snapshot repository</name>
+            <url>http://oss.jfrog.org/artifactory/oss-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <ciManagement>
         <url>https://travis-ci.org/Orange-OpenSource/spring-cloud-s3-connectors</url>
