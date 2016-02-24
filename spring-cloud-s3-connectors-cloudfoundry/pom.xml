@@ -5,7 +5,7 @@
     <parent>
         <artifactId>spring-cloud-s3-connectors</artifactId>
         <groupId>com.orange.spring.cloud.connectors</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0.8-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.orange.spring.cloud.connectors</groupId>
             <artifactId>spring-cloud-s3-connectors-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0.8-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
