@@ -1,0 +1,4 @@
+http://oss.jfrog.org/api/plugins/build/promote/snapshotsToBintray/spring-cloud-s3-connectors-core/10
+http://oss.jfrog.org/api/plugins/build/promote/snapshotsToBintray/spring-cloud-s3-connectors-cloudfoundry/10
+http://oss.jfrog.org/api/plugins/build/promote/snapshotsToBintray/spring-cloud-s3-connectors-heroku/10
+http://oss.jfrog.org/api/plugins/build/promote/snapshotsToBintray/spring-cloud-s3-connectors-localconfig/10
