@@ -42,7 +42,7 @@ then
 	echo "Compiling and deploying to OSS Jfrog"
 
 	mvn -q deploy:help --settings settings.xml
-	mvn clean deploy --settings settings.xml
+	mvn clean deploy --settings settings.xml -P ojo-build-info
 
 	echo $RELEASE_CANDIDATE_SNAPSHOT_VERSION > RELEASE_CANDIDATE_VERSION
 else
