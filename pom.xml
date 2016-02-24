@@ -4,26 +4,48 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.orange.cloudfoundry.connector</groupId>
-    <artifactId>cloudfoundry-s3-service-connector</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.orange.spring.cloud.connectors</groupId>
+    <artifactId>spring-cloud-s3-connectors</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>spring-cloud-s3-connectors-core</module>
+        <module>spring-cloud-s3-connectors-cloudfoundry</module>
+        <module>spring-cloud-s3-connectors-localconfig</module>
+        <module>spring-cloud-s3-connectors-heroku</module>
+    </modules>
 
+    <scm>
+        <url>git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git</url>
+        <connection>scm:git:git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git</connection>
+        <developerConnection>scm:git:git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <ciManagement>
+        <url>https://travis-ci.org/Orange-OpenSource/spring-cloud-s3-connectors</url>
+    </ciManagement>
+
+    <packaging>pom</packaging>
+    <properties>
+        <spring.cloud.connectors.version>1.2.1.RELEASE</spring.cloud.connectors.version>
+        <jclouds.provider.s3.version>1.9.2</jclouds.provider.s3.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-            <version>1.1.1.RELEASE</version>
+            <artifactId>spring-cloud-core</artifactId>
+            <version>${spring.cloud.connectors.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.provider</groupId>
             <artifactId>aws-s3</artifactId>
-            <version>1.9.0</version>
+            <version>${jclouds.provider.s3.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-            <version>1.1.1.RELEASE</version>
+            <artifactId>spring-cloud-core</artifactId>
+            <version>${spring.cloud.connectors.version}</version>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
@@ -54,8 +76,31 @@
     </dependencies>
     <repositories>
         <repository>
-            <id>intalio.org</id>
-            <url>http://www.intalio.org/public/maven2</url>
+            <id>jcenter</id>
+            <name>JCenter-Bintray</name>
+            <url>http://jcenter.bintray.com</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>http://repo.spring.io/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 </project>
