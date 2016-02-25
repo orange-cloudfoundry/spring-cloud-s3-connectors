@@ -24,10 +24,12 @@ public class SpringCloudBlobStoreContext implements BlobStoreContext {
 
     private BlobStoreContext wrappedBlobStoreContext;
     private SpringCloudBlobStore springCloudBlobStore;
+    private String bucketName;
 
     public SpringCloudBlobStoreContext(BlobStoreContext blobStoreContext, String bucketName) {
         this.wrappedBlobStoreContext = blobStoreContext;
-        springCloudBlobStore = new SpringCloudBlobStore(blobStoreContext.getBlobStore(), bucketName, this);
+        this.bucketName = bucketName;
+        springCloudBlobStore = new SpringCloudBlobStore(blobStoreContext.getBlobStore(), this.bucketName, this);
     }
 
 
@@ -73,5 +75,14 @@ public class SpringCloudBlobStoreContext implements BlobStoreContext {
 
     public BlobStoreContext getWrappedBlobStoreContext() {
         return wrappedBlobStoreContext;
+    }
+
+    public String getBucketName() {
+        return bucketName;
+    }
+
+    public void setBucketName(String bucketName) {
+        this.bucketName = bucketName;
+        this.springCloudBlobStore.setBucketName(bucketName);
     }
 }

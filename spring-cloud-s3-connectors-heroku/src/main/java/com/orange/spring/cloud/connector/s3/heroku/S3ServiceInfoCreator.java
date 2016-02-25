@@ -47,11 +47,6 @@ public class S3ServiceInfoCreator extends HerokuServiceInfoCreator<S3ServiceInfo
         return this.createServiceInfo(s3DetectableService);
     }
 
-    /* package for testing purpose */
-    void setCloudEnvironment(EnvironmentAccessor environment) {
-        this.environment = environment;
-    }
-
     public S3ServiceInfo createServiceInfo(S3DetectableService s3DetectableService) {
         Map<String, String> env = environment.getEnv();
         String accessKeyId = env.get(s3DetectableService.getAccessKeyIdEnvKey());
