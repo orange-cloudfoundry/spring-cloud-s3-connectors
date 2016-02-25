@@ -55,7 +55,7 @@ First, make a version propertie:
 
 ```xml
 <properties>
-    <s3.connectors.version>2.0.12</s3.connectors.version>
+    <s3.connectors.version>2.0.15</s3.connectors.version>
 </properties>
 ```
 
@@ -63,7 +63,7 @@ First, make a version propertie:
 
 ```gradle
 ext {
-	s3ConnectorsVersion = "2.0.12"
+	s3ConnectorsVersion = "2.0.15"
 }
 ```
 
@@ -207,4 +207,7 @@ You can find an example app here: https://github.com/Orange-OpenSource/s3-connec
 
 ## Contributing
 
+Report any issues or pull request on this repo.
+
+Feedbacks for heroku are really welcome.
 
