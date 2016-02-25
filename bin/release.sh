@@ -25,10 +25,9 @@ then
 
 	echo "Extracted Travis repo name: $REPO_NAME"
 
-	echo "http://oss.jfrog.org/api/plugins/build/promote/snapshotsToBintray/spring-cloud-s3-connectors-core/${TRAVIS_BUILD_NUMBER}" >JFrogPromotion.url
-	echo "http://oss.jfrog.org/api/plugins/build/promote/snapshotsToBintray/spring-cloud-s3-connectors-cloudfoundry/${TRAVIS_BUILD_NUMBER}" >>JFrogPromotion.url
-	echo "http://oss.jfrog.org/api/plugins/build/promote/snapshotsToBintray/spring-cloud-s3-connectors-heroku/${TRAVIS_BUILD_NUMBER}" >>JFrogPromotion.url
-	echo "http://oss.jfrog.org/api/plugins/build/promote/snapshotsToBintray/spring-cloud-s3-connectors-localconfig/${TRAVIS_BUILD_NUMBER}" >>JFrogPromotion.url
+    JFROG_PROMOTION_URL=http://oss.jfrog.org/api/plugins/build/promote/snapshotsToBintray/$REPO_NAME/${TRAVIS_BUILD_NUMBER}
+	echo "$JFROG_PROMOTION_URL">JFrogPromotion.url
+
 	git status
 	git checkout -b "release-candidate/$RELEASE_NAME"
 	git add JFrogPromotion.url

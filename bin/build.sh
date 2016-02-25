@@ -52,9 +52,7 @@ fi
 
 if [[ "${TRAVIS_TAG}" = releases/* ]]
 then
-    cat JFrogPromotion.url | while read JFROG_PROMOTION_URL
-    do
-        echo "Promoting build on JFrog to Bintray (Promotion URL: $JFROG_PROMOTION_URL)"
-        curl --silent -X POST -u ${BINTRAY_USER}:${BINTRAY_PASSWORD} $JFROG_PROMOTION_URL
-    done
+    JFROG_PROMOTION_URL=$(cat JFrogPromotion.url)
+    echo "Promoting build on JFrog to Bintray (Promotion URL: $JFROG_PROMOTION_URL)"
+    curl --silent -X POST -u ${BINTRAY_USER}:${BINTRAY_PASSWORD} $JFROG_PROMOTION_URL
 fi
