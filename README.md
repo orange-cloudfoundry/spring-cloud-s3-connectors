@@ -205,6 +205,16 @@ public class ExampleS3 {
 
 You can find an example app here: https://github.com/Orange-OpenSource/s3-connectors-poc
 
+## Use HTTP Proxy
+
+In order to use HTTP Proxy you can set these JVM properties:
+
+- **http.proxyHost**: host of the proxy
+- **http.proxyPort**: port of the proxy
+- **http.proxyUsername** (Optional): User name to connect to the proxy
+- **http.proxyPassword** (Optional): Password to connect to the proxy
+- **skip.ssl.verification** (Optional): If set to true it will trust all certificates
+
 ## Contributing
 
 Report any issues or pull request on this repo.
