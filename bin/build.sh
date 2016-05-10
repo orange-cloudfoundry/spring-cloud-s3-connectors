@@ -28,7 +28,8 @@ export VERSION_PREFIX=$(expr "$VERSION_SNAPSHOT" : "\(.*\)-SNAP.*")
 if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "$TRAVIS_BRANCH" = "master" ]
 then
 	#We are on master without PR
-	export RELEASE_CANDIDATE_VERSION=$VERSION_PREFIX.${TRAVIS_BUILD_NUMBER}
+	prefix_number=$(($TRAVIS_BUILD_NUMBER % 10))
+	export RELEASE_CANDIDATE_VERSION=$VERSION_PREFIX.${prefix_number}
 	export RELEASE_CANDIDATE_SNAPSHOT_VERSION=${RELEASE_CANDIDATE_VERSION}-SNAPSHOT
 
 	echo "Release candidate snapshot version: $RELEASE_CANDIDATE_SNAPSHOT_VERSION"
