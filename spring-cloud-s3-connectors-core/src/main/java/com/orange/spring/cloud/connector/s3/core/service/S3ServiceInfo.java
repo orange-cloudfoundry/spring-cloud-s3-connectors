@@ -3,6 +3,9 @@ package com.orange.spring.cloud.connector.s3.core.service;
 
 import org.springframework.cloud.service.UriBasedServiceInfo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,21 +50,20 @@ public class S3ServiceInfo extends UriBasedServiceInfo {
     }
 
     public String getS3Host() {
-        if (this.isAwsS3()) {
-            return this.getS3AwsHost();
+        String host = this.getHost();
+        if (this.isVirtualHostBuckets()) {
+            List<String> splittedHost = new ArrayList<String>(Arrays.asList(host.split("\\.")));
+            splittedHost.remove(0);
+            host = String.join(".", splittedHost);
         }
         String port = "";
         if (this.getPort() != -1) {
             port += ":" + this.getPort();
         }
         String protocol = this.getProtocol();
-        return protocol + "://" + this.getHost() + port;
+        return protocol + "://" + host + port;
     }
 
-    public String getS3AwsHost() {
-        String protocol = this.getProtocol();
-        return protocol + "://" + this.getHost();
-    }
 
     public String getBucketFromVirtualHost() {
         if (!this.isVirtualHostBuckets()) {
