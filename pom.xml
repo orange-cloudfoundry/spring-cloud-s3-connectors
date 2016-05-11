@@ -106,6 +106,8 @@
                                     <licenseMerge>${apacheLicenseMerge}</licenseMerge>
                                 </licenseMerges>
                                 <outputDirectory>${project.basedir}</outputDirectory>
+                                <failIfWarning>true</failIfWarning>
+                                <verbose>true</verbose>
                             </configuration>
                         </execution>
                     </executions>
