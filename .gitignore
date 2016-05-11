@@ -1,2 +1,4 @@
 target
 /projectFilesBackup
+*.iml
+.idea
