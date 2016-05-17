@@ -9,7 +9,7 @@ Lists of 28 third-party dependencies.
      (The Apache Software License, Version 2.0) Google Guice - Core Library (com.google.inject:guice:3.0 - http://code.google.com/p/google-guice/guice/)
      (The Apache Software License, Version 2.0) Google Guice - Extensions - AssistedInject (com.google.inject.extensions:guice-assistedinject:3.0 - http://code.google.com/p/google-guice/extensions-parent/guice-assistedinject/)
      (The Apache Software License, Version 2.0) java-xmlbuilder (com.jamesmurty.utils:java-xmlbuilder:1.1 - https://github.com/jmurty/java-xmlbuilder)
-     (The Apache Software License, Version 2.0) spring-cloud-s3-connectors-core (com.orange.spring.cloud.connectors:spring-cloud-s3-connectors-core:2.1-SNAPSHOT - no url defined)
+     (The Apache Software License, Version 2.0) spring-cloud-s3-connectors-core (com.orange.spring.cloud.connectors:spring-cloud-s3-connectors-core:2.1.0-SNAPSHOT - no url defined)
      (COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0) JSR-250 Common Annotations for the JavaTM Platform (javax.annotation:jsr250-api:1.0 - http://jcp.org/aboutJava/communityprocess/final/jsr250/index.html)
      (The Apache Software License, Version 2.0) javax.inject (javax.inject:javax.inject:1 - http://code.google.com/p/atinject/)
      (CDDL License) jsr311-api (javax.ws.rs:jsr311-api:1.1.1 - https://jsr311.dev.java.net)
