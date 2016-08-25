@@ -15,9 +15,9 @@
     </modules>
 
     <scm>
-        <url>git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git</url>
-        <connection>scm:git:git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git</connection>
-        <developerConnection>scm:git:git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git
+        <url>git@github.com:orange-cloudfoundry/spring-cloud-s3-connectors.git</url>
+        <connection>scm:git:git@github.com:orange-cloudfoundry/spring-cloud-s3-connectors.git</connection>
+        <developerConnection>scm:git:git@github.com:orange-cloudfoundry/spring-cloud-s3-connectors.git
         </developerConnection>
         <tag>HEAD</tag>
     </scm>
