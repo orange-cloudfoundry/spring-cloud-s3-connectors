@@ -1,27 +1,32 @@
 language: bash
 sudo: required
 services:
-  - docker
+- docker
 before_install:
-  - git config user.name "$GH_USER"
-  - git config user.email "$GH_USER_EMAIL"
-  # setup https authentication credentials, used by ./mvnw release:prepare
-  - git config credential.helper "store --file=.git/credentials"
-  - echo "https://$GH_TOKEN:@github.com" > .git/credentials
-  - git config --global push.default simple
+- git config --global user.name "$GH_USER"
+- git config --global user.email "$GH_USER_EMAIL"
+- git config credential.helper "store --file=.git/credentials"
+- echo "https://$GH_TOKEN:@github.com" > .git/credentials
+- git config --global push.default simple
 script:
-  - chmod ugo+x bin/*.sh
-  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker run -it -v $(pwd):/root/sources -e BINTRAY_USER -e BINTRAY_PASSWORD -e COVERALLS_TOKEN -e TRAVIS_BRANCH -e TRAVIS_TAG -e TRAVIS_PULL_REQUEST -e TRAVIS_BUILD_NUMBER -e TRAVIS_REPO_SLUG -w /root/sources maven:${MAVEN_DOCKER_VERSION}-jdk-8 bin/build.sh || true'
-  - '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && docker run -it -v $(pwd):/root/sources -w /root/sources maven:${MAVEN_DOCKER_VERSION}-jdk-8 mvn clean verify --settings settings.xml || true'
+- chmod ugo+x bin/*.sh
+- '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && docker run -it -v $(pwd):/root/sources
+  -e BINTRAY_USER -e BINTRAY_PASSWORD -e COVERALLS_TOKEN -e TRAVIS_BRANCH -e TRAVIS_TAG
+  -e TRAVIS_PULL_REQUEST -e TRAVIS_BUILD_NUMBER -e TRAVIS_REPO_SLUG -w /root/sources
+  maven:${MAVEN_DOCKER_VERSION}-jdk-8 bin/build.sh || true'
+- '[ "${TRAVIS_PULL_REQUEST}" != "false" ] && docker run -it -v $(pwd):/root/sources
+  -w /root/sources maven:${MAVEN_DOCKER_VERSION}-jdk-8 mvn clean verify --settings
+  settings.xml || true'
 branches:
   except:
-    # ignore branch starting with release-candidate
-    - /^release-candidate.*$/
+  - /^release-candidate.*$/
 after_success:
-  - bin/release.sh
+- bin/release.sh
 env:
   global:
   - MAVEN_DOCKER_VERSION=3.3.3
+  - GH_USER="ArthurHlt"
+  - GH_USER_EMAIL="arthur.halet@orange.com"
   - secure: Q0rogsMICGLpPtODQYQkYuK++vNkOOGyftnuPmPQuaNznJxdzUDvFIo65AYRkYY1JITRA/qMJXrWmf0egvflgzb1yYWCISxdDdacAJDp0zgCFjbmPu0lCYibUcuzrajt6DkrJtl7qheT2GdDmaNIz1bQKgcXgDqzagjZZs3pKTRgHhv8OC14WrFiArEbhC3c25tzR4j1UoOXUuJNuK0WZOn5+FvVvgT8OlIZdQx13LWP3Xzgkl5qQu5PJ60cvS5+hPYOhB5GKKAQZS3m4NCv4c3dHIbqb7t7PCiV2JtUGOedJ0zFW95fuWZV+DiH7SV20dGekfcbpiG0eX8bJsAPehrQ0TVNmYMUTpNz6IRDJJOjiMX5Pp85D66GbdUHUnC3sbnpv/0RX6Gmt19aJHIlp37vSm82608dPeAw1PQcMQtEsHkIrWMsrokqJupK4Dqfcm/vQs7OEqANIsifLzdMvxYkmLKdBdKUbvJiNbU9HAInrgqdP4MYxBmfP1tHNASH6/+9lDhla0v9QlEgWlVX+mCD/mu2elVTTqXF+Poj9yE7AMECH8H/SNK0Vc/h1CdJMzeExPcKy9DIn0eJgQ0rweJDAGJMhGpMDdIPHYH2AB4U/rLHyMhkd5TfNHvGkTbosqhAl0BMhmtAwvUrpcSF4XCZqRr5NepW6NC6SLWehyY=
   - secure: mOkJ7sAcFQFwpqOZj129WHjE8xTiGdiaxTXVArCe5WYxYze7HtefzSvX5t/ZMFZLEn3VvEKsrVYQVsfoqapnGBdM0qtJr5hFbkNG89SnvfSbmyaRvPoYdXbpwbSfbtz1Pyipo1TBb1XbFAKROfAGYnlzs9DFO+qdVRBYJ3ggqHfdLLHZh0VcYQo2xly3HPmsf+alUxFXb6FFsWa+B4rSCZvMtk7h3Pnwl850M72cYdtq/2pjKvW0KUhtXuNE5LPi/xuXUuqxJ2yrXUC/CVImX6mWplhfO/kPHGG9Cb7ggHD6GGNaP++9f3DJ2Wk4949lvQ/6AH8aVpoby5oqYULmjXmrFGD4JNq/hOBf6qLkRjIdSQWmh5raSjCTAJb9a9ldb6lh7PR7Ev3yLpuL3UTFICN3m0INLZSY6zIxy8GxZv3GsnlJnfpUABKaEjZahX6R5G2LOcP6Q6nMOoUiXs917SwNuyxdtUD0532JKRwzx/Z8VP3u9BjHAn6op7Jw+zVnvOVurDTkCsTJv6FAuzKEYtfDjk046jH1+vALSundCtEJhUQO/dHdvILCgxgEsXku/Q+4s+HqMnC4hCO8+rujq/16ZrfllfKdPb2gTgN4SAZ7Tq7ElPVESi7dHlbOCh8TEeNqCY4dHaXwjJ7vJetvwK8jMxwiEE6F4A9d3hs13QA=
-  - secure: bv3guM/MqjzEm+MKl4lyxnkLHDZmGQzDToAOBU37AQRhjeU5A9HPWJPFc+iPD5uuShxGC+ZZ9RPsogt4TM4OAyyCd0otb/iOOl1nC1HJH3Qq9cWvnWEK/StRNrqTxNva7dSgdjHeA65+cCzY8pIKAr7mjiMfYyU9d8NoEf5qSUU/WUX2kECRHkOMwvIEVQtfchPG924QjsGNNmMEHnC/MyCpnR3sNaLsexhH48n/sdivmKJvDj20KnERSb75H/TdgLukOEEy2HVC3eCZdH0T5WJNvXKWh2eU9Hsrru+BBb4OtuvwMwRNZB4dPEjQVHehOoUjJU/9CGBsCp00w4h8IfbO94vNW1YYn2M8V/c/bPMZnUuw3gOJ98z1xViJF70GQV8hcovycAQXWYq91oEOwtc6xzA0Ta5ZVEXbIYCTSb5ABNYNAsy1yjo/Zp+tWrcR04pqaeFdt27V2z/fSXXz/Xv/dTYyHMfObVjPk6SHcbZMASyCybG6A5ksVSYX2BRJB7zquHwhZOX8pa01RYg65ayV1jiCgPcQjHIdWHu/ofgv8qBf8oNJjbqROGYflg5Z5O/+U7gZyl/pAF+p+Z+yy3H8aFtzdsGQQwXByhUFoBA4/CjHxXFwwtjJ7GhpAXOhH5NGAGFvmnzVMv54rQN1fDpg1HjNWz+XxLrMtoqL0u0=
+  - secure: N+1SN6X4Miil22DPq5p+S4Ooztp3EfoM63cKO+4iDNUQDuvXJDaogX/p44iHibQRN+Pw086IP0kHe6Zj6wjk1f+OlRNu+8Znz2nZFv2SzPw971DCp67lT65gWUZihh/N+vp7sHnRCR5U03/WAHilgF/EtbnkpJBMtuPhVGqiYiQ7V0yUQ+bpALHVGk2jAZiqVRcs0umlVzIFQUzx7kpRDviIaSI+hasqGX+h67ROdOiHV5WRlRp0utw+oMSO5nX95oB/wFLV/DELvdRHbxxm7mMis4+NV7u3qZt18vW7ojJDSkP6mHxANC5uvchR178h+w48q1NFytBzjJ8IBLBa7fB3NcCfw8HX6XEIKKyYRuxhRhi+PpkgLZoASwWbCueR4zz1ToK0TvgN0L44vSdBrvccoMFsyHJKnNEyCRNckD3w93rwsktuWqxLLG7IGAiUJAG5bOcNTGQrtSw9AUlS1Y5BWMppRwxt+/fPzWcOyvoVXCGNkBru5V5jnZ2H5PPkOIS9oUxPPYAAZaS6jSbXJlE0EO/qwaZQPrs806X2IE6IO//O2L4W/X0hy74NK6ECCXkHnbBBAw7ee+iMshYZPAiNTOy3T/J7xxl2j0tHWpNdAlT4/oLDXO5NQ+XPtFT0ddP7p24kYvm3XeelVrCQ69PGzrIEkpXf+9fo6dXB004=
