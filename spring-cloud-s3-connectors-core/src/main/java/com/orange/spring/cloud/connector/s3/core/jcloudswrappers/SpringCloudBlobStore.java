@@ -1,5 +1,6 @@
 package com.orange.spring.cloud.connector.s3.core.jcloudswrappers;
 
+import com.google.common.annotations.Beta;
 import org.jclouds.blobstore.BlobStore;
 import org.jclouds.blobstore.BlobStoreContext;
 import org.jclouds.blobstore.domain.*;
@@ -8,8 +9,13 @@ import org.jclouds.blobstore.options.GetOptions;
 import org.jclouds.blobstore.options.ListContainerOptions;
 import org.jclouds.blobstore.options.PutOptions;
 import org.jclouds.domain.Location;
+import org.jclouds.io.Payload;
 
+import java.io.File;
+import java.io.InputStream;
+import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
 
 /**
  * Copyright (C) 2016 Orange
@@ -159,5 +165,72 @@ public class SpringCloudBlobStore {
 
     public void setBucketName(String bucketName) {
         this.bucketName = bucketName;
+    }
+
+
+    @Beta
+    public MultipartUpload initiateMultipartUpload(BlobMetadata blob, PutOptions options) {
+        return this.wrappedBlobStore.initiateMultipartUpload(this.bucketName, blob, options);
+    }
+
+    @Beta
+    // TODO: take parts?
+    public void abortMultipartUpload(MultipartUpload mpu) {
+        this.wrappedBlobStore.abortMultipartUpload(mpu);
+    }
+
+    @Beta
+    public String completeMultipartUpload(MultipartUpload mpu, List<MultipartPart> parts) {
+        return this.wrappedBlobStore.completeMultipartUpload(mpu, parts);
+    }
+
+    @Beta
+    public MultipartPart uploadMultipartPart(MultipartUpload mpu, int partNumber, Payload payload) {
+        return this.wrappedBlobStore.uploadMultipartPart(mpu, partNumber, payload);
+    }
+
+    @Beta
+    public List<MultipartPart> listMultipartUpload(MultipartUpload mpu) {
+        return this.wrappedBlobStore.listMultipartUpload(mpu);
+    }
+
+    @Beta
+    public List<MultipartUpload> listMultipartUploads() {
+        return this.wrappedBlobStore.listMultipartUploads(this.bucketName);
+    }
+
+    @Beta
+    public long getMinimumMultipartPartSize() {
+        return this.wrappedBlobStore.getMinimumMultipartPartSize();
+    }
+
+    @Beta
+    public long getMaximumMultipartPartSize() {
+        return this.wrappedBlobStore.getMaximumMultipartPartSize();
+    }
+
+    @Beta
+    public int getMaximumNumberOfParts() {
+        return this.wrappedBlobStore.getMaximumNumberOfParts();
+    }
+
+    @Beta
+    void downloadBlob(String name, File destination) {
+        this.wrappedBlobStore.downloadBlob(this.bucketName, name, destination);
+    }
+
+    @Beta
+    public void downloadBlob(String name, File destination, ExecutorService executor) {
+        this.wrappedBlobStore.downloadBlob(this.bucketName, name, destination, executor);
+    }
+
+    @Beta
+    public InputStream streamBlob(String name) {
+        return this.wrappedBlobStore.streamBlob(this.bucketName, name);
+    }
+
+    @Beta
+    public InputStream streamBlob(String name, ExecutorService executor) {
+        return this.wrappedBlobStore.streamBlob(this.bucketName, name, executor);
     }
 }
