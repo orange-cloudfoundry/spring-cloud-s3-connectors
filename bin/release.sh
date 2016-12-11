@@ -37,5 +37,5 @@ then
 	export GITHUB_DATA='{"tag_name":"'$TAG_NAME'","target_commitish":"release-candidate/'$RELEASE_NAME'","name":"'$RELEASE_NAME'","body":"'$TAG_DESC'","draft": true,"prerelease": true}'
 	echo "Github data: $GITHUB_DATA"
 	sleep 10
-	curl --silent -X POST --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/Orange-OpenSource/$REPO_NAME/releases
+	curl --silent -X POST --data "$GITHUB_DATA" https://$GH_TOKEN@api.github.com/repos/orange-cloudfoundry/$REPO_NAME/releases
 fi
