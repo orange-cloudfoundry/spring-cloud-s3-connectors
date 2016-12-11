@@ -1,14 +1,14 @@
 # Spring-cloud-s3-connectors
-[![Build Status](https://travis-ci.org/Orange-OpenSource/spring-cloud-s3-connectors.svg)](https://travis-ci.org/Orange-OpenSource/spring-cloud-s3-connectors)
+[![Build Status](https://travis-ci.org/orange-cloudfoundry/spring-cloud-s3-connectors.svg)](https://travis-ci.org/orange-cloudfoundry/spring-cloud-s3-connectors)
 [![Apache Version 2 Licence](http://img.shields.io/:license-Apache%20v2-blue.svg)](LICENSE)
 [ ![Download](https://api.bintray.com/packages/elpaaso/maven/spring-cloud-s3-connectors/images/download.svg) ](https://bintray.com/elpaaso/maven/spring-cloud-s3-connectors/_latestVersion)
 
 
-[![Join the chat at https://gitter.im/Orange-OpenSource/elpaaso](https://img.shields.io/badge/gitter-join%20chat%20→-brightgreen.svg)](https://gitter.im/Orange-OpenSource/elpaaso?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/orange-cloudfoundry/elpaaso](https://img.shields.io/badge/gitter-join%20chat%20→-brightgreen.svg)](https://gitter.im/orange-cloudfoundry/elpaaso?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Spring cloud s3 service connectors to use s3 in CloudFoundry, Heroku or Local Config.
 
-**You can find an example app here: https://github.com/Orange-OpenSource/s3-connectors-poc**
+**You can find an example app here: https://github.com/orange-cloudfoundry/s3-connectors-poc**
 
 ## Getting started
 

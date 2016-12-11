@@ -15,9 +15,9 @@
     </modules>
 
     <scm>
-        <url>git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git</url>
-        <connection>scm:git:git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git</connection>
-        <developerConnection>scm:git:git@github.com:Orange-OpenSource/spring-cloud-s3-connectors.git
+        <url>git@github.com:orange-cloudfoundry/spring-cloud-s3-connectors.git</url>
+        <connection>scm:git:git@github.com:orange-cloudfoundry/spring-cloud-s3-connectors.git</connection>
+        <developerConnection>scm:git:git@github.com:orange-cloudfoundry/spring-cloud-s3-connectors.git
         </developerConnection>
         <tag>HEAD</tag>
     </scm>
@@ -29,11 +29,23 @@
             <url>http://oss.jfrog.org/artifactory/oss-snapshot-local</url>
         </snapshotRepository>
     </distributionManagement>
-
+    <inceptionYear>2016</inceptionYear>
+    <organization>
+        <name>Orange</name>
+        <url>http://opensource.orange.com</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
     <packaging>pom</packaging>
     <properties>
         <spring.cloud.connectors.version>1.2.1.RELEASE</spring.cloud.connectors.version>
         <jclouds.provider.s3.version>2.0.0</jclouds.provider.s3.version>
+        <apacheLicenseMerge>
+            <![CDATA[The Apache Software License, Version 2.0|Apache License, Version 2.0|Apache Public License 2.0|Apache 2]]></apacheLicenseMerge>
     </properties>
     <dependencies>
         <dependency>
@@ -79,6 +91,30 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>1.8</version>
+                    <executions>
+                        <execution>
+                            <id>add-third-party</id>
+                            <configuration>
+                                <licenseMerges>
+                                    <licenseMerge>${apacheLicenseMerge}</licenseMerge>
+                                </licenseMerges>
+                                <outputDirectory>${project.basedir}</outputDirectory>
+                                <failIfWarning>true</failIfWarning>
+                                <verbose>true</verbose>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
     <repositories>
         <repository>
             <id>jcenter</id>
