@@ -6,7 +6,7 @@
 
     <groupId>com.orange.spring.cloud.connectors</groupId>
     <artifactId>spring-cloud-s3-connectors</artifactId>
-    <version>2.2-SNAPSHOT</version>
+    <version>2.2.5-SNAPSHOT</version>
     <modules>
         <module>spring-cloud-s3-connectors-core</module>
         <module>spring-cloud-s3-connectors-cloudfoundry</module>
